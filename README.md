@@ -40,3 +40,9 @@ At this initial stage, personal data from people seeking help and general visito
 ## GitHub Pages
 
 The site is isolated in [docs/site](docs/site). To publish it, enable GitHub Pages from the repository settings and choose GitHub Actions as the source. The workflow in [.github/workflows/pages.yml](.github/workflows/pages.yml) uploads only `docs/site`.
+
+If the workflow fails at `actions/configure-pages` with `Get Pages site failed`, open the repository on GitHub and go to:
+
+`Settings` -> `Pages` -> `Build and deployment` -> `Source` -> `GitHub Actions`
+
+Then rerun the workflow. Do not rely on `enablement: true` with the default `GITHUB_TOKEN`; GitHub's `configure-pages` action requires a separate token with Pages/admin permissions to auto-enable Pages.

@@ -29,10 +29,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure Pages
+        # Requires repository Settings > Pages > Source: GitHub Actions.
+        # Auto-enablement requires a separate PAT/GitHub App token with Pages/admin permissions.
         uses: actions/configure-pages@v5
 
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs/site
 
