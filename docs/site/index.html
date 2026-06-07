@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Ajuda Perto é uma iniciativa open source para conectar pessoas a ajuda social confiável, próxima e verificável."
+      content="Ajuda Perto is an open source initiative to connect people with trustworthy, nearby, and verifiable social support."
     />
     <title>Ajuda Perto - Open social help infrastructure</title>
     <style>
@@ -187,6 +187,32 @@
         flex-wrap: wrap;
         gap: 0.75rem;
         margin-top: 2rem;
+      }
+
+      .hero-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 2.2rem;
+        max-width: 980px;
+      }
+
+      .hero-summary div {
+        border: 1px solid rgba(31, 122, 92, 0.22);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 0.9rem;
+      }
+
+      .hero-summary strong {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: var(--green-dark);
+      }
+
+      .hero-summary span {
+        color: var(--muted);
+        font-size: 0.95rem;
       }
 
       .button {
@@ -399,7 +425,8 @@
 
         .grid.three,
         .grid.two,
-        .timeline {
+        .timeline,
+        .hero-summary {
           grid-template-columns: 1fr;
         }
 
@@ -416,184 +443,199 @@
     </style>
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link" href="#content">Skip to content</a>
     <header>
-      <nav class="nav" aria-label="Navegação principal">
+      <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="#topo" aria-label="Ajuda Perto">
           <span class="brand-mark" aria-hidden="true">+</span>
           <span>Ajuda Perto</span>
         </a>
         <div class="nav-links">
-          <a href="#projeto">Projeto</a>
-          <a href="#contribuir">Contribuir</a>
-          <a href="#divulgar">Divulgar</a>
-          <a href="#arquitetura">Arquitetura MVP</a>
-          <a href="../en/README.md">Docs EN</a>
-          <a href="../pt-BR/README.md">Docs PT-BR</a>
+          <a href="#project">Project</a>
+          <a href="#contribute">Contribute</a>
+          <a href="#grow">Grow</a>
+          <a href="#architecture">MVP Architecture</a>
+          <a href="en/README.md">Docs EN</a>
+          <a href="pt-BR/README.md">Docs PT-BR</a>
         </div>
       </nav>
     </header>
 
-    <main id="conteudo">
+    <main id="content">
       <section class="intro" id="topo">
         <div class="intro-inner">
-          <div class="eyebrow">Open source para dignidade humana</div>
-          <h1>Uma plataforma aberta para encontrar ajuda social confiável perto de você.</h1>
+          <div class="eyebrow">Open source for human dignity</div>
+          <h1>Open social infrastructure for finding trustworthy help nearby.</h1>
           <p class="lead">
-            Ajuda Perto quer organizar informações sobre comida, abrigo, saúde,
-            documentação, emprego, apoio jurídico, educação e voluntariado em um
-            sistema simples, verificável e feito pela comunidade.
+            Ajuda Perto organizes information about food, shelter, healthcare,
+            documents, employment, legal support, education, and volunteering
+            into a simple, verifiable, community-built system.
           </p>
-          <div class="actions" aria-label="Ações principais">
-            <a class="button" href="../pt-BR/ROADMAP.md">Ver roadmap</a>
-            <a class="button secondary" href="../pt-BR/CONTRIBUTING.md">Como contribuir</a>
-            <a class="button secondary" href="#divulgar">Trazer mais gente</a>
+          <div class="actions" aria-label="Primary actions">
+            <a class="button" href="en/ROADMAP.md">Read the roadmap</a>
+            <a class="button secondary" href="en/CONTRIBUTING.md">Contribute</a>
+            <a class="button secondary" href="pt-BR/README.md">Português</a>
+          </div>
+          <div class="hero-summary" aria-label="Project focus">
+            <div>
+              <strong>Current focus</strong>
+              <span>One local MVP, around 200 verified services, and a clear contribution path.</span>
+            </div>
+            <div>
+              <strong>Privacy first</strong>
+              <span>No server-side personal data storage for people seeking help at this stage.</span>
+            </div>
+            <div>
+              <strong>Community powered</strong>
+              <span>Code, data, design, outreach, and local chapters all matter.</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="projeto">
-        <h2>O que é o projeto</h2>
+      <section class="section" id="project">
+        <h2>What the project is</h2>
         <p class="section-intro">
-          O Ajuda Perto é infraestrutura social aberta. A primeira versão será
-          um MVP local, mobile-first, com busca anônima e catálogo verificado de
-          serviços reais. A ambição é global, mas o começo precisa ser pequeno,
-          útil e confiável.
+          Ajuda Perto is open social infrastructure. The first version is a
+          local, mobile-first MVP with anonymous search and a verified catalog
+          of real services. The long-term vision is global, but the first step
+          must be small, useful, and trustworthy.
         </p>
         <div class="grid three">
           <article class="panel">
-            <h3>Para quem precisa de ajuda</h3>
+            <h3>For people seeking help</h3>
             <p>
-              Buscar serviços próximos sem criar conta, sem entregar CPF, sem
-              informar endereço exato e sem ter seus dados pessoais armazenados
-              no servidor.
+              Find nearby services without creating an account, sharing an ID,
+              providing an exact address, or having personal data stored
+              server-side.
             </p>
           </article>
           <article class="panel">
-            <h3>Para organizações</h3>
+            <h3>For organizations</h3>
             <p>
-              Manter serviços atualizados, responder correções, receber
-              visibilidade responsável e colaborar com uma base pública
-              confiável.
+              Keep services up to date, respond to corrections, receive
+              responsible visibility, and collaborate on a trustworthy public
+              knowledge base.
             </p>
           </article>
           <article class="panel">
-            <h3>Para a comunidade</h3>
+            <h3>For the community</h3>
             <p>
-              Contribuir com código, dados, revisão, design, tradução,
-              segurança, parcerias, divulgação e capítulos locais.
+              Contribute code, data, review, design, translation, security,
+              partnerships, outreach, and local chapters.
             </p>
           </article>
         </div>
-        <div class="tag-row" aria-label="Princípios do projeto">
-          <span class="tag">Sem login para buscar ajuda</span>
-          <span class="tag">Sem venda de dados</span>
+        <div class="tag-row" aria-label="Project principles">
+          <span class="tag">No login to find help</span>
+          <span class="tag">No sale of personal data</span>
           <span class="tag">LGPD + GDPR/RGPD</span>
-          <span class="tag">Dados verificados</span>
-          <span class="tag">IA com revisão humana</span>
+          <span class="tag">Verified data</span>
+          <span class="tag">Human-reviewed AI</span>
         </div>
       </section>
 
       <section class="section">
-        <h2>O que vamos construir primeiro</h2>
+        <h2>What we will build first</h2>
         <p class="section-intro">
-          O MVP deve provar que pessoas conseguem encontrar ajuda real com uma
-          experiência simples. O foco inicial recomendado é uma cidade, poucas
-          categorias e cerca de 200 serviços confiáveis.
+          The MVP should prove that people can find real help through a simple
+          experience. The recommended initial scope is one city, a few
+          categories, and around 200 trustworthy services.
         </p>
-        <div class="timeline" aria-label="Fases iniciais do MVP">
+        <div class="timeline" aria-label="Initial MVP phases">
           <div class="step">
-            <div class="num">01 Fundação</div>
-            <strong>Governança, políticas, labels e backlog.</strong>
-            <p>Preparar o projeto para receber contribuições com segurança.</p>
+            <div class="num">01 Foundation</div>
+            <strong>Governance, policies, labels, and backlog.</strong>
+            <p>Prepare the project to receive contributions safely.</p>
           </div>
           <div class="step">
-            <div class="num">02 Dados</div>
-            <strong>Modelo, fontes e verificação.</strong>
-            <p>Cadastrar serviços com fonte, status e última atualização.</p>
+            <div class="num">02 Data</div>
+            <strong>Model, sources, and verification.</strong>
+            <p>Add services with source, status, and last update.</p>
           </div>
           <div class="step">
-            <div class="num">03 Produto</div>
-            <strong>Busca, detalhes e reports.</strong>
-            <p>Permitir busca anônima, páginas claras e correção de erros.</p>
+            <div class="num">03 Product</div>
+            <strong>Search, details, and reports.</strong>
+            <p>Enable anonymous search, clear pages, and error correction.</p>
           </div>
           <div class="step">
-            <div class="num">04 Operação</div>
-            <strong>Admin, métricas e rotina.</strong>
-            <p>Revisar dados e medir impacto sem rastrear pessoas.</p>
+            <div class="num">04 Operations</div>
+            <strong>Admin, metrics, and routine.</strong>
+            <p>Review data and measure impact without tracking people.</p>
           </div>
         </div>
       </section>
 
-      <section class="section" id="contribuir">
-        <h2>Como contribuir</h2>
+      <section class="section" id="contribute">
+        <h2>How to contribute</h2>
         <p class="section-intro">
-          Não é preciso esperar uma permissão especial para começar. Escolha uma
-          parte pequena, abra uma issue ou PR, explique o impacto e respeite as
-          políticas de privacidade, dados e segurança.
+          You do not need special permission to start. Pick a small piece, open
+          an issue or pull request, explain the impact, and respect the privacy,
+          data, and security policies.
         </p>
         <div class="grid three">
           <article class="panel">
-            <h3>Código e infraestrutura</h3>
+            <h3>Code and infrastructure</h3>
             <ul>
               <li>Frontend mobile-first.</li>
-              <li>API de catálogo.</li>
-              <li>Painel administrativo.</li>
-              <li>Testes, CI, deploy e observabilidade.</li>
+              <li>Catalog API.</li>
+              <li>Admin panel.</li>
+              <li>Tests, CI, deployment, and observability.</li>
             </ul>
           </article>
           <article class="panel">
-            <h3>Dados e verificação</h3>
+            <h3>Data and verification</h3>
             <ul>
-              <li>Mapear serviços reais.</li>
-              <li>Confirmar fontes oficiais.</li>
-              <li>Revisar duplicados.</li>
-              <li>Corrigir horários, contatos e status.</li>
+              <li>Map real services.</li>
+              <li>Confirm official sources.</li>
+              <li>Review duplicates.</li>
+              <li>Fix hours, contacts, and status.</li>
             </ul>
           </article>
           <article class="panel">
-            <h3>Design, docs e comunidade</h3>
+            <h3>Design, docs, and community</h3>
             <ul>
-              <li>Melhorar textos simples.</li>
-              <li>Testar acessibilidade.</li>
-              <li>Traduzir documentação.</li>
-              <li>Ajudar novas pessoas a começar.</li>
+              <li>Improve plain-language copy.</li>
+              <li>Test accessibility.</li>
+              <li>Translate documentation.</li>
+              <li>Help new contributors start.</li>
             </ul>
           </article>
         </div>
         <p class="highlight">
-          <strong>Primeira regra:</strong> se uma mudança coleta ou armazena
-          dados pessoais de quem busca ajuda, pare e peça revisão. No estágio
-          inicial, o produto deve funcionar sem armazenar esses dados no servidor.
+          <strong>First rule:</strong> if a change collects or stores personal
+          data from people seeking help, stop and ask for review. At the initial
+          stage, the product must work without storing that data server-side.
         </p>
       </section>
 
-      <section class="section" id="divulgar">
-        <h2>Como divulgar e trazer mais gente</h2>
+      <section class="section" id="grow">
+        <h2>How to spread the word and bring more people in</h2>
         <p class="section-intro">
-          Uma comunidade open source cresce quando pessoas diferentes encontram
-          um jeito concreto de ajudar. Divulgação não é só postar link: é criar
-          pontes, remover atrito e transformar atenção em contribuição.
+          An open source community grows when different people can find a
+          concrete way to help. Outreach is not just posting links: it is
+          building bridges, removing friction, and turning attention into
+          contribution.
         </p>
         <div class="grid two">
           <article class="panel">
-            <h3>Canais de divulgação</h3>
+            <h3>Outreach channels</h3>
             <ul class="initiative-list">
-              <li>Criar perfis do projeto em LinkedIn, Instagram e YouTube.</li>
-              <li>Publicar progresso semanal: issues fechadas, dados revisados e próximos pedidos de ajuda.</li>
-              <li>Divulgar chamadas específicas: "precisamos revisar 50 serviços de alimentação".</li>
-              <li>Participar de comunidades de tecnologia, universidades, ONGs e grupos locais.</li>
-              <li>Criar apresentações curtas para eventos, meetups e hackathons sociais.</li>
+              <li>Create project profiles on LinkedIn, Instagram, and YouTube.</li>
+              <li>Publish weekly progress: closed issues, reviewed data, and next calls for help.</li>
+              <li>Share specific calls: "we need to review 50 food support services".</li>
+              <li>Join technology communities, universities, NGOs, and local groups.</li>
+              <li>Create short presentations for events, meetups, and social hackathons.</li>
             </ul>
           </article>
           <article class="panel">
-            <h3>Patrocínios responsáveis</h3>
+            <h3>Responsible sponsorships</h3>
             <ul class="initiative-list">
-              <li>Procurar empresas para apoiar infraestrutura, domínio, eventos, design e bolsas de contribuição.</li>
-              <li>Oferecer reconhecimento público sem vender prioridade em resultados essenciais.</li>
-              <li>Criar campanhas de voluntariado corporativo para revisão de dados e acessibilidade.</li>
-              <li>Buscar grants, universidades, fundações e programas de impacto social.</li>
-              <li>Publicar apoiadores e conflitos de interesse com transparência.</li>
+              <li>Ask companies to support infrastructure, domains, events, design, and contributor grants.</li>
+              <li>Offer public recognition without selling priority in essential help results.</li>
+              <li>Create corporate volunteering campaigns for data review and accessibility.</li>
+              <li>Pursue grants, universities, foundations, and social impact programs.</li>
+              <li>Publish supporters and conflicts of interest transparently.</li>
             </ul>
           </article>
         </div>
@@ -601,48 +643,48 @@
 
       <section class="callout-band">
         <div class="section">
-          <h2>Mentalidade de iniciativa</h2>
+          <h2>Initiative mindset</h2>
           <p class="section-intro">
-            O projeto precisa de pessoas que façam o que precisa ser feito com
-            responsabilidade. Não espere tudo estar perfeito. Pegue uma parte
-            pequena, documente, execute, peça revisão e ajude outra pessoa a
-            continuar.
+            The project needs people who do what needs to be done responsibly.
+            Do not wait for everything to be perfect. Pick a small part,
+            document it, execute it, ask for review, and help the next person
+            continue.
           </p>
           <div class="grid three">
             <article>
-              <h3>Veja uma lacuna</h3>
+              <h3>Notice a gap</h3>
               <p>
-                Falta uma issue, uma tradução, um contato, um dado, um teste ou
-                um canal de divulgação? Crie o primeiro rascunho.
+                Missing an issue, translation, contact, dataset, test, or
+                outreach channel? Create the first draft.
               </p>
             </article>
             <article>
-              <h3>Proteja a missão</h3>
+              <h3>Protect the mission</h3>
               <p>
-                Crescimento não pode atropelar privacidade, segurança, revisão
-                humana, transparência ou dignidade de quem busca ajuda.
+                Growth cannot override privacy, security, human review,
+                transparency, or the dignity of people seeking help.
               </p>
             </article>
             <article>
-              <h3>Multiplique pessoas</h3>
+              <h3>Multiply people</h3>
               <p>
-                A melhor contribuição não termina em você. Ela deixa instruções,
-                exemplos e próximos passos para mais gente participar.
+                The best contribution does not end with you. It leaves
+                instructions, examples, and next steps for more people to join.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="arquitetura">
-        <h2>Arquitetura simples do MVP</h2>
+      <section class="section" id="architecture">
+        <h2>Simple MVP architecture</h2>
         <p class="section-intro">
-          O desenho abaixo resume o MVP descrito no roadmap: busca pública sem
-          login, catálogo verificado, revisão manual, API mínima, banco de dados
-          institucional e métricas agregadas sem rastrear usuários.
+          The diagram below summarizes the MVP from the roadmap: public search
+          without login, verified catalog, manual review, minimal API,
+          institutional database, and aggregate metrics without user tracking.
         </p>
 
-        <div class="architecture-wrap" role="img" aria-label="Diagrama da arquitetura do MVP do Ajuda Perto">
+        <div class="architecture-wrap" role="img" aria-label="Ajuda Perto MVP architecture diagram">
           <svg
             class="architecture"
             viewBox="0 0 1120 680"
@@ -668,64 +710,64 @@
 
             <rect x="0" y="0" width="1120" height="680" rx="18" fill="#f7f8f5" />
 
-            <text x="48" y="54" font-size="26" font-weight="850" fill="#17211d">MVP Ajuda Perto</text>
+            <text x="48" y="54" font-size="26" font-weight="850" fill="#17211d">Ajuda Perto MVP</text>
             <text x="48" y="82" font-size="15" fill="#53645c">
-              Busca anônima + catálogo verificado + revisão humana + métricas agregadas
+              Anonymous search + verified catalog + human review + aggregate metrics
             </text>
 
             <g filter="url(#shadow)">
               <rect x="48" y="130" width="220" height="112" rx="8" fill="#e6f5ee" stroke="#8fc7ae" />
-              <text x="74" y="166" font-size="17" font-weight="800" fill="#15513f">Pessoas buscando ajuda</text>
-              <text x="74" y="194" font-size="13" fill="#53645c">Sem login obrigatório</text>
-              <text x="74" y="216" font-size="13" fill="#53645c">Sem dados pessoais no servidor</text>
+              <text x="74" y="166" font-size="17" font-weight="800" fill="#15513f">People seeking help</text>
+              <text x="74" y="194" font-size="13" fill="#53645c">No mandatory login</text>
+              <text x="74" y="216" font-size="13" fill="#53645c">No server-side personal data</text>
 
               <rect x="48" y="280" width="220" height="112" rx="8" fill="#e8f1fb" stroke="#8bb9e7" />
-              <text x="74" y="316" font-size="17" font-weight="800" fill="#1f568c">Organizações</text>
-              <text x="74" y="344" font-size="13" fill="#53645c">Serviços, contatos e horários</text>
-              <text x="74" y="366" font-size="13" fill="#53645c">Alterações enviadas para revisão</text>
+              <text x="74" y="316" font-size="17" font-weight="800" fill="#1f568c">Organizations</text>
+              <text x="74" y="344" font-size="13" fill="#53645c">Services, contacts, hours</text>
+              <text x="74" y="366" font-size="13" fill="#53645c">Changes submitted for review</text>
 
               <rect x="48" y="430" width="220" height="112" rx="8" fill="#fff3d6" stroke="#e6c671" />
-              <text x="74" y="466" font-size="17" font-weight="800" fill="#674509">Voluntários verificadores</text>
-              <text x="74" y="494" font-size="13" fill="#53645c">Fontes, reports e duplicados</text>
-              <text x="74" y="516" font-size="13" fill="#53645c">Nenhuma publicação automática</text>
+              <text x="74" y="466" font-size="17" font-weight="800" fill="#674509">Volunteer verifiers</text>
+              <text x="74" y="494" font-size="13" fill="#53645c">Sources, reports, duplicates</text>
+              <text x="74" y="516" font-size="13" fill="#53645c">No automatic publication</text>
             </g>
 
             <g filter="url(#shadow)">
               <rect x="360" y="132" width="250" height="150" rx="8" fill="#ffffff" stroke="#dfe5dd" />
-              <text x="392" y="168" font-size="18" font-weight="850" fill="#17211d">Web app público</text>
-              <text x="392" y="198" font-size="13" fill="#53645c">Home, busca e detalhes do serviço</text>
-              <text x="392" y="220" font-size="13" fill="#53645c">Sugerir serviço e reportar erro</text>
-              <text x="392" y="242" font-size="13" fill="#53645c">Mobile-first e acessível</text>
+              <text x="392" y="168" font-size="18" font-weight="850" fill="#17211d">Public web app</text>
+              <text x="392" y="198" font-size="13" fill="#53645c">Home, search, service details</text>
+              <text x="392" y="220" font-size="13" fill="#53645c">Suggest service and report error</text>
+              <text x="392" y="242" font-size="13" fill="#53645c">Mobile-first and accessible</text>
 
               <rect x="360" y="340" width="250" height="150" rx="8" fill="#ffffff" stroke="#dfe5dd" />
-              <text x="392" y="376" font-size="18" font-weight="850" fill="#17211d">Painel admin mínimo</text>
-              <text x="392" y="406" font-size="13" fill="#53645c">Fila de sugestões e reports</text>
-              <text x="392" y="428" font-size="13" fill="#53645c">Status, verificação e histórico</text>
-              <text x="392" y="450" font-size="13" fill="#53645c">Revisão humana antes de publicar</text>
+              <text x="392" y="376" font-size="18" font-weight="850" fill="#17211d">Minimal admin panel</text>
+              <text x="392" y="406" font-size="13" fill="#53645c">Suggestions and reports queue</text>
+              <text x="392" y="428" font-size="13" fill="#53645c">Status, verification, history</text>
+              <text x="392" y="450" font-size="13" fill="#53645c">Human review before publishing</text>
             </g>
 
             <g filter="url(#shadow)">
               <rect x="704" y="118" width="230" height="118" rx="8" fill="#ffffff" stroke="#dfe5dd" />
-              <text x="734" y="154" font-size="18" font-weight="850" fill="#17211d">API pública mínima</text>
-              <text x="734" y="184" font-size="13" fill="#53645c">GET serviços e categorias</text>
-              <text x="734" y="206" font-size="13" fill="#53645c">POST sugestões e reports</text>
+              <text x="734" y="154" font-size="18" font-weight="850" fill="#17211d">Minimal public API</text>
+              <text x="734" y="184" font-size="13" fill="#53645c">GET services and categories</text>
+              <text x="734" y="206" font-size="13" fill="#53645c">POST suggestions and reports</text>
 
               <rect x="704" y="280" width="230" height="118" rx="8" fill="#ffffff" stroke="#dfe5dd" />
-              <text x="734" y="316" font-size="18" font-weight="850" fill="#17211d">Banco institucional</text>
-              <text x="734" y="346" font-size="13" fill="#53645c">Organizações, serviços, locais</text>
-              <text x="734" y="368" font-size="13" fill="#53645c">Fontes e logs de verificação</text>
+              <text x="734" y="316" font-size="18" font-weight="850" fill="#17211d">Institutional database</text>
+              <text x="734" y="346" font-size="13" fill="#53645c">Organizations, services, places</text>
+              <text x="734" y="368" font-size="13" fill="#53645c">Sources and verification logs</text>
 
               <rect x="704" y="442" width="230" height="118" rx="8" fill="#ffffff" stroke="#dfe5dd" />
-              <text x="734" y="478" font-size="18" font-weight="850" fill="#17211d">Métricas agregadas</text>
-              <text x="734" y="508" font-size="13" fill="#53645c">Busca por cidade/categoria</text>
-              <text x="734" y="530" font-size="13" fill="#53645c">Sem perfil ou rastreamento</text>
+              <text x="734" y="478" font-size="18" font-weight="850" fill="#17211d">Aggregate metrics</text>
+              <text x="734" y="508" font-size="13" fill="#53645c">Searches by city/category</text>
+              <text x="734" y="530" font-size="13" fill="#53645c">No profile or tracking</text>
             </g>
 
             <g filter="url(#shadow)">
               <rect x="962" y="280" width="110" height="118" rx="8" fill="#fdebe7" stroke="#dfa093" />
               <text x="986" y="318" font-size="17" font-weight="850" fill="#8c2f21">Jobs</text>
-              <text x="982" y="348" font-size="13" fill="#53645c">Importação</text>
-              <text x="982" y="370" font-size="13" fill="#53645c">Revisão</text>
+              <text x="982" y="348" font-size="13" fill="#53645c">Import</text>
+              <text x="982" y="370" font-size="13" fill="#53645c">Review</text>
             </g>
 
             <path d="M268 186 H360" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
@@ -738,48 +780,48 @@
             <path d="M934 339 H962" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
 
             <rect x="360" y="566" width="574" height="58" rx="8" fill="#17211d" />
-            <text x="392" y="590" font-size="14" font-weight="800" fill="#ffffff">Regra de privacidade do MVP</text>
+            <text x="392" y="590" font-size="14" font-weight="800" fill="#ffffff">MVP privacy rule</text>
             <text x="392" y="612" font-size="13" fill="#d8e7df">
-              Usuários finais não geram perfil, histórico individual, GPS preciso ou analytics identificável no servidor.
+              End users generate no server-side profile, individual history, precise GPS, or identifiable analytics.
             </text>
           </svg>
         </div>
         <p class="architecture-note">
-          Próxima evolução: busca semântica, painel de organizações e capítulos
-          locais só entram depois que o MVP provar valor com dados confiáveis e
-          privacidade preservada.
+          Next evolution: semantic search, organization dashboards, and local
+          chapters should only come after the MVP proves value with trustworthy
+          data and preserved privacy.
         </p>
       </section>
 
       <section class="section">
-        <h2>Comece por uma tarefa pequena</h2>
+        <h2>Start with one small task</h2>
         <p class="section-intro">
-          O projeto precisa de ação concreta. Estas são boas primeiras frentes
-          para abrir ou assumir issues.
+          The project needs concrete action. These are good first areas for
+          opening or taking issues.
         </p>
         <div class="grid three">
           <article class="panel">
-            <h3>Fundação</h3>
+            <h3>Foundation</h3>
             <ul class="check-list">
-              <li>Criar templates de issue e PR.</li>
-              <li>Definir licença.</li>
-              <li>Configurar labels e milestones.</li>
+              <li>Create issue and PR templates.</li>
+              <li>Define the license.</li>
+              <li>Configure labels and milestones.</li>
             </ul>
           </article>
           <article class="panel">
-            <h3>Dados</h3>
+            <h3>Data</h3>
             <ul class="check-list">
-              <li>Mapear 50 serviços iniciais.</li>
-              <li>Verificar fontes e contatos.</li>
-              <li>Criar checklist de qualidade.</li>
+              <li>Map the first 50 services.</li>
+              <li>Verify sources and contacts.</li>
+              <li>Create the quality checklist.</li>
             </ul>
           </article>
           <article class="panel">
-            <h3>Produto</h3>
+            <h3>Product</h3>
             <ul class="check-list">
-              <li>Prototipar busca mobile.</li>
-              <li>Desenhar página de serviço.</li>
-              <li>Definir API mínima.</li>
+              <li>Prototype mobile search.</li>
+              <li>Design the service page.</li>
+              <li>Define the minimal API.</li>
             </ul>
           </article>
         </div>
@@ -788,10 +830,10 @@
 
     <footer>
       <div class="footer-inner">
-        <span>Ajuda Perto - tecnologia feita por pessoas, para pessoas.</span>
+        <span>Ajuda Perto - technology built by people, for people.</span>
         <span>
-          <a href="../en/ROADMAP.md">Roadmap EN</a> ·
-          <a href="../pt-BR/ROADMAP.md">Roadmap PT-BR</a>
+          <a href="en/ROADMAP.md">Roadmap EN</a> ·
+          <a href="pt-BR/ROADMAP.md">Roadmap PT-BR</a>
         </span>
       </div>
     </footer>

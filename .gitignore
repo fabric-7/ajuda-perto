@@ -53,5 +53,6 @@ temp/
 .cache/
 
 # GitHub Pages / static site generated artifacts
+.pages/
 .jekyll-cache/
 .sass-cache/

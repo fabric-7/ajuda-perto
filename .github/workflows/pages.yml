@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "docs/site/**"
+      - "docs/en/**"
+      - "docs/pt-BR/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -33,10 +35,18 @@ jobs:
         # Auto-enablement requires a separate PAT/GitHub App token with Pages/admin permissions.
         uses: actions/configure-pages@v5
 
+      - name: Prepare static site artifact
+        run: |
+          rm -rf .pages
+          mkdir -p .pages
+          cp -R docs/site/. .pages/
+          cp -R docs/en .pages/en
+          cp -R docs/pt-BR .pages/pt-BR
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: docs/site
+          path: .pages
 
       - name: Deploy to GitHub Pages
         id: deployment
