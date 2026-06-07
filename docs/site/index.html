@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Ajuda Perto é uma iniciativa open source para conectar pessoas a ajuda social confiável, próxima e verificável."
+    />
+    <title>Ajuda Perto - Open social help infrastructure</title>
+    <style>
+      :root {
+        --bg: #f7f8f5;
+        --surface: #ffffff;
+        --ink: #17211d;
+        --muted: #53645c;
+        --line: #dfe5dd;
+        --green: #1f7a5c;
+        --green-dark: #15513f;
+        --blue: #2867a8;
+        --blue-soft: #e8f1fb;
+        --coral: #c9503c;
+        --gold: #9b6b18;
+        --gold-soft: #fff3d6;
+        --mint: #e6f5ee;
+        --shadow: 0 18px 48px rgba(23, 33, 29, 0.1);
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--green-dark);
+        font-weight: 700;
+        text-decoration-color: rgba(31, 122, 92, 0.35);
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        text-decoration-color: currentColor;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: 0.5rem;
+        z-index: 10;
+        transform: translateY(-140%);
+        border-radius: 6px;
+        background: var(--ink);
+        color: #fff;
+        padding: 0.6rem 0.8rem;
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 248, 245, 0.94);
+        backdrop-filter: blur(14px);
+        position: sticky;
+        top: 0;
+        z-index: 5;
+      }
+
+      .nav {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 850;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--green);
+        color: #fff;
+        font-size: 1.15rem;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.85rem 1rem;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--green-dark);
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      .intro {
+        background: #edf6f0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .intro-inner {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: clamp(3.2rem, 8vw, 6.8rem) 0 clamp(2.6rem, 6vw, 4.8rem);
+      }
+
+      .eyebrow {
+        color: var(--green-dark);
+        font-size: 0.86rem;
+        font-weight: 850;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 920px;
+        margin: 1rem 0 1.2rem;
+        font-size: clamp(2.4rem, 8vw, 5.4rem);
+      }
+
+      h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+      }
+
+      h3 {
+        margin: 0 0 0.65rem;
+        font-size: 1.18rem;
+      }
+
+      .lead {
+        max-width: 780px;
+        color: var(--muted);
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+
+      .button {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 1px solid var(--green);
+        border-radius: 8px;
+        padding: 0.72rem 1rem;
+        background: var(--green);
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--green-dark);
+      }
+
+      .button:hover {
+        filter: brightness(0.96);
+      }
+
+      .section {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: clamp(3rem, 7vw, 5.2rem) 0;
+      }
+
+      .section + .section {
+        border-top: 1px solid var(--line);
+      }
+
+      .section-intro {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        padding: 1.2rem;
+        box-shadow: 0 10px 30px rgba(23, 33, 29, 0.05);
+      }
+
+      .panel strong {
+        color: var(--ink);
+      }
+
+      .panel p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .panel ul,
+      .initiative-list,
+      .check-list {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: var(--muted);
+      }
+
+      .panel li + li,
+      .initiative-list li + li,
+      .check-list li + li {
+        margin-top: 0.45rem;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tag {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.3rem 0.62rem;
+        background: #fff;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .highlight {
+        background: var(--gold-soft);
+        border: 1px solid #efd48d;
+        border-radius: 8px;
+        padding: 1rem 1.1rem;
+        color: #574117;
+      }
+
+      .highlight strong {
+        color: #332307;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .step {
+        border-left: 4px solid var(--green);
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 1rem;
+        min-height: 148px;
+      }
+
+      .step .num {
+        color: var(--green-dark);
+        font-weight: 900;
+        font-size: 0.86rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .architecture-wrap {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        padding: clamp(0.6rem, 2vw, 1rem);
+        overflow-x: auto;
+      }
+
+      .architecture {
+        display: block;
+        min-width: 920px;
+        width: 100%;
+        height: auto;
+      }
+
+      .architecture text {
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      .architecture-note {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .callout-band {
+        background: var(--green-dark);
+        color: #fff;
+      }
+
+      .callout-band .section {
+        border-top: 0;
+      }
+
+      .callout-band p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .callout-band a {
+        color: #fff;
+        text-decoration-color: rgba(255, 255, 255, 0.5);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 2rem 0;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      @media (max-width: 860px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 0.8rem 0;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .grid.three,
+        .grid.two,
+        .timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .intro-inner {
+          padding-top: 3rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header>
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#topo" aria-label="Ajuda Perto">
+          <span class="brand-mark" aria-hidden="true">+</span>
+          <span>Ajuda Perto</span>
+        </a>
+        <div class="nav-links">
+          <a href="#projeto">Projeto</a>
+          <a href="#contribuir">Contribuir</a>
+          <a href="#divulgar">Divulgar</a>
+          <a href="#arquitetura">Arquitetura MVP</a>
+          <a href="../en/README.md">Docs EN</a>
+          <a href="../pt-BR/README.md">Docs PT-BR</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="conteudo">
+      <section class="intro" id="topo">
+        <div class="intro-inner">
+          <div class="eyebrow">Open source para dignidade humana</div>
+          <h1>Uma plataforma aberta para encontrar ajuda social confiável perto de você.</h1>
+          <p class="lead">
+            Ajuda Perto quer organizar informações sobre comida, abrigo, saúde,
+            documentação, emprego, apoio jurídico, educação e voluntariado em um
+            sistema simples, verificável e feito pela comunidade.
+          </p>
+          <div class="actions" aria-label="Ações principais">
+            <a class="button" href="../pt-BR/ROADMAP.md">Ver roadmap</a>
+            <a class="button secondary" href="../pt-BR/CONTRIBUTING.md">Como contribuir</a>
+            <a class="button secondary" href="#divulgar">Trazer mais gente</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projeto">
+        <h2>O que é o projeto</h2>
+        <p class="section-intro">
+          O Ajuda Perto é infraestrutura social aberta. A primeira versão será
+          um MVP local, mobile-first, com busca anônima e catálogo verificado de
+          serviços reais. A ambição é global, mas o começo precisa ser pequeno,
+          útil e confiável.
+        </p>
+        <div class="grid three">
+          <article class="panel">
+            <h3>Para quem precisa de ajuda</h3>
+            <p>
+              Buscar serviços próximos sem criar conta, sem entregar CPF, sem
+              informar endereço exato e sem ter seus dados pessoais armazenados
+              no servidor.
+            </p>
+          </article>
+          <article class="panel">
+            <h3>Para organizações</h3>
+            <p>
+              Manter serviços atualizados, responder correções, receber
+              visibilidade responsável e colaborar com uma base pública
+              confiável.
+            </p>
+          </article>
+          <article class="panel">
+            <h3>Para a comunidade</h3>
+            <p>
+              Contribuir com código, dados, revisão, design, tradução,
+              segurança, parcerias, divulgação e capítulos locais.
+            </p>
+          </article>
+        </div>
+        <div class="tag-row" aria-label="Princípios do projeto">
+          <span class="tag">Sem login para buscar ajuda</span>
+          <span class="tag">Sem venda de dados</span>
+          <span class="tag">LGPD + GDPR/RGPD</span>
+          <span class="tag">Dados verificados</span>
+          <span class="tag">IA com revisão humana</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>O que vamos construir primeiro</h2>
+        <p class="section-intro">
+          O MVP deve provar que pessoas conseguem encontrar ajuda real com uma
+          experiência simples. O foco inicial recomendado é uma cidade, poucas
+          categorias e cerca de 200 serviços confiáveis.
+        </p>
+        <div class="timeline" aria-label="Fases iniciais do MVP">
+          <div class="step">
+            <div class="num">01 Fundação</div>
+            <strong>Governança, políticas, labels e backlog.</strong>
+            <p>Preparar o projeto para receber contribuições com segurança.</p>
+          </div>
+          <div class="step">
+            <div class="num">02 Dados</div>
+            <strong>Modelo, fontes e verificação.</strong>
+            <p>Cadastrar serviços com fonte, status e última atualização.</p>
+          </div>
+          <div class="step">
+            <div class="num">03 Produto</div>
+            <strong>Busca, detalhes e reports.</strong>
+            <p>Permitir busca anônima, páginas claras e correção de erros.</p>
+          </div>
+          <div class="step">
+            <div class="num">04 Operação</div>
+            <strong>Admin, métricas e rotina.</strong>
+            <p>Revisar dados e medir impacto sem rastrear pessoas.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contribuir">
+        <h2>Como contribuir</h2>
+        <p class="section-intro">
+          Não é preciso esperar uma permissão especial para começar. Escolha uma
+          parte pequena, abra uma issue ou PR, explique o impacto e respeite as
+          políticas de privacidade, dados e segurança.
+        </p>
+        <div class="grid three">
+          <article class="panel">
+            <h3>Código e infraestrutura</h3>
+            <ul>
+              <li>Frontend mobile-first.</li>
+              <li>API de catálogo.</li>
+              <li>Painel administrativo.</li>
+              <li>Testes, CI, deploy e observabilidade.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Dados e verificação</h3>
+            <ul>
+              <li>Mapear serviços reais.</li>
+              <li>Confirmar fontes oficiais.</li>
+              <li>Revisar duplicados.</li>
+              <li>Corrigir horários, contatos e status.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Design, docs e comunidade</h3>
+            <ul>
+              <li>Melhorar textos simples.</li>
+              <li>Testar acessibilidade.</li>
+              <li>Traduzir documentação.</li>
+              <li>Ajudar novas pessoas a começar.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="highlight">
+          <strong>Primeira regra:</strong> se uma mudança coleta ou armazena
+          dados pessoais de quem busca ajuda, pare e peça revisão. No estágio
+          inicial, o produto deve funcionar sem armazenar esses dados no servidor.
+        </p>
+      </section>
+
+      <section class="section" id="divulgar">
+        <h2>Como divulgar e trazer mais gente</h2>
+        <p class="section-intro">
+          Uma comunidade open source cresce quando pessoas diferentes encontram
+          um jeito concreto de ajudar. Divulgação não é só postar link: é criar
+          pontes, remover atrito e transformar atenção em contribuição.
+        </p>
+        <div class="grid two">
+          <article class="panel">
+            <h3>Canais de divulgação</h3>
+            <ul class="initiative-list">
+              <li>Criar perfis do projeto em LinkedIn, Instagram e YouTube.</li>
+              <li>Publicar progresso semanal: issues fechadas, dados revisados e próximos pedidos de ajuda.</li>
+              <li>Divulgar chamadas específicas: "precisamos revisar 50 serviços de alimentação".</li>
+              <li>Participar de comunidades de tecnologia, universidades, ONGs e grupos locais.</li>
+              <li>Criar apresentações curtas para eventos, meetups e hackathons sociais.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Patrocínios responsáveis</h3>
+            <ul class="initiative-list">
+              <li>Procurar empresas para apoiar infraestrutura, domínio, eventos, design e bolsas de contribuição.</li>
+              <li>Oferecer reconhecimento público sem vender prioridade em resultados essenciais.</li>
+              <li>Criar campanhas de voluntariado corporativo para revisão de dados e acessibilidade.</li>
+              <li>Buscar grants, universidades, fundações e programas de impacto social.</li>
+              <li>Publicar apoiadores e conflitos de interesse com transparência.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="callout-band">
+        <div class="section">
+          <h2>Mentalidade de iniciativa</h2>
+          <p class="section-intro">
+            O projeto precisa de pessoas que façam o que precisa ser feito com
+            responsabilidade. Não espere tudo estar perfeito. Pegue uma parte
+            pequena, documente, execute, peça revisão e ajude outra pessoa a
+            continuar.
+          </p>
+          <div class="grid three">
+            <article>
+              <h3>Veja uma lacuna</h3>
+              <p>
+                Falta uma issue, uma tradução, um contato, um dado, um teste ou
+                um canal de divulgação? Crie o primeiro rascunho.
+              </p>
+            </article>
+            <article>
+              <h3>Proteja a missão</h3>
+              <p>
+                Crescimento não pode atropelar privacidade, segurança, revisão
+                humana, transparência ou dignidade de quem busca ajuda.
+              </p>
+            </article>
+            <article>
+              <h3>Multiplique pessoas</h3>
+              <p>
+                A melhor contribuição não termina em você. Ela deixa instruções,
+                exemplos e próximos passos para mais gente participar.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="arquitetura">
+        <h2>Arquitetura simples do MVP</h2>
+        <p class="section-intro">
+          O desenho abaixo resume o MVP descrito no roadmap: busca pública sem
+          login, catálogo verificado, revisão manual, API mínima, banco de dados
+          institucional e métricas agregadas sem rastrear usuários.
+        </p>
+
+        <div class="architecture-wrap" role="img" aria-label="Diagrama da arquitetura do MVP do Ajuda Perto">
+          <svg
+            class="architecture"
+            viewBox="0 0 1120 680"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <marker
+                id="arrow"
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="7"
+                markerHeight="7"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#53645c" />
+              </marker>
+              <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#17211d" flood-opacity="0.12" />
+              </filter>
+            </defs>
+
+            <rect x="0" y="0" width="1120" height="680" rx="18" fill="#f7f8f5" />
+
+            <text x="48" y="54" font-size="26" font-weight="850" fill="#17211d">MVP Ajuda Perto</text>
+            <text x="48" y="82" font-size="15" fill="#53645c">
+              Busca anônima + catálogo verificado + revisão humana + métricas agregadas
+            </text>
+
+            <g filter="url(#shadow)">
+              <rect x="48" y="130" width="220" height="112" rx="8" fill="#e6f5ee" stroke="#8fc7ae" />
+              <text x="74" y="166" font-size="17" font-weight="800" fill="#15513f">Pessoas buscando ajuda</text>
+              <text x="74" y="194" font-size="13" fill="#53645c">Sem login obrigatório</text>
+              <text x="74" y="216" font-size="13" fill="#53645c">Sem dados pessoais no servidor</text>
+
+              <rect x="48" y="280" width="220" height="112" rx="8" fill="#e8f1fb" stroke="#8bb9e7" />
+              <text x="74" y="316" font-size="17" font-weight="800" fill="#1f568c">Organizações</text>
+              <text x="74" y="344" font-size="13" fill="#53645c">Serviços, contatos e horários</text>
+              <text x="74" y="366" font-size="13" fill="#53645c">Alterações enviadas para revisão</text>
+
+              <rect x="48" y="430" width="220" height="112" rx="8" fill="#fff3d6" stroke="#e6c671" />
+              <text x="74" y="466" font-size="17" font-weight="800" fill="#674509">Voluntários verificadores</text>
+              <text x="74" y="494" font-size="13" fill="#53645c">Fontes, reports e duplicados</text>
+              <text x="74" y="516" font-size="13" fill="#53645c">Nenhuma publicação automática</text>
+            </g>
+
+            <g filter="url(#shadow)">
+              <rect x="360" y="132" width="250" height="150" rx="8" fill="#ffffff" stroke="#dfe5dd" />
+              <text x="392" y="168" font-size="18" font-weight="850" fill="#17211d">Web app público</text>
+              <text x="392" y="198" font-size="13" fill="#53645c">Home, busca e detalhes do serviço</text>
+              <text x="392" y="220" font-size="13" fill="#53645c">Sugerir serviço e reportar erro</text>
+              <text x="392" y="242" font-size="13" fill="#53645c">Mobile-first e acessível</text>
+
+              <rect x="360" y="340" width="250" height="150" rx="8" fill="#ffffff" stroke="#dfe5dd" />
+              <text x="392" y="376" font-size="18" font-weight="850" fill="#17211d">Painel admin mínimo</text>
+              <text x="392" y="406" font-size="13" fill="#53645c">Fila de sugestões e reports</text>
+              <text x="392" y="428" font-size="13" fill="#53645c">Status, verificação e histórico</text>
+              <text x="392" y="450" font-size="13" fill="#53645c">Revisão humana antes de publicar</text>
+            </g>
+
+            <g filter="url(#shadow)">
+              <rect x="704" y="118" width="230" height="118" rx="8" fill="#ffffff" stroke="#dfe5dd" />
+              <text x="734" y="154" font-size="18" font-weight="850" fill="#17211d">API pública mínima</text>
+              <text x="734" y="184" font-size="13" fill="#53645c">GET serviços e categorias</text>
+              <text x="734" y="206" font-size="13" fill="#53645c">POST sugestões e reports</text>
+
+              <rect x="704" y="280" width="230" height="118" rx="8" fill="#ffffff" stroke="#dfe5dd" />
+              <text x="734" y="316" font-size="18" font-weight="850" fill="#17211d">Banco institucional</text>
+              <text x="734" y="346" font-size="13" fill="#53645c">Organizações, serviços, locais</text>
+              <text x="734" y="368" font-size="13" fill="#53645c">Fontes e logs de verificação</text>
+
+              <rect x="704" y="442" width="230" height="118" rx="8" fill="#ffffff" stroke="#dfe5dd" />
+              <text x="734" y="478" font-size="18" font-weight="850" fill="#17211d">Métricas agregadas</text>
+              <text x="734" y="508" font-size="13" fill="#53645c">Busca por cidade/categoria</text>
+              <text x="734" y="530" font-size="13" fill="#53645c">Sem perfil ou rastreamento</text>
+            </g>
+
+            <g filter="url(#shadow)">
+              <rect x="962" y="280" width="110" height="118" rx="8" fill="#fdebe7" stroke="#dfa093" />
+              <text x="986" y="318" font-size="17" font-weight="850" fill="#8c2f21">Jobs</text>
+              <text x="982" y="348" font-size="13" fill="#53645c">Importação</text>
+              <text x="982" y="370" font-size="13" fill="#53645c">Revisão</text>
+            </g>
+
+            <path d="M268 186 H360" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M268 336 H360" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M268 486 H360" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M610 207 H704" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M610 415 H704" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M819 236 V280" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M819 398 V442" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+            <path d="M934 339 H962" stroke="#53645c" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+
+            <rect x="360" y="566" width="574" height="58" rx="8" fill="#17211d" />
+            <text x="392" y="590" font-size="14" font-weight="800" fill="#ffffff">Regra de privacidade do MVP</text>
+            <text x="392" y="612" font-size="13" fill="#d8e7df">
+              Usuários finais não geram perfil, histórico individual, GPS preciso ou analytics identificável no servidor.
+            </text>
+          </svg>
+        </div>
+        <p class="architecture-note">
+          Próxima evolução: busca semântica, painel de organizações e capítulos
+          locais só entram depois que o MVP provar valor com dados confiáveis e
+          privacidade preservada.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Comece por uma tarefa pequena</h2>
+        <p class="section-intro">
+          O projeto precisa de ação concreta. Estas são boas primeiras frentes
+          para abrir ou assumir issues.
+        </p>
+        <div class="grid three">
+          <article class="panel">
+            <h3>Fundação</h3>
+            <ul class="check-list">
+              <li>Criar templates de issue e PR.</li>
+              <li>Definir licença.</li>
+              <li>Configurar labels e milestones.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Dados</h3>
+            <ul class="check-list">
+              <li>Mapear 50 serviços iniciais.</li>
+              <li>Verificar fontes e contatos.</li>
+              <li>Criar checklist de qualidade.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Produto</h3>
+            <ul class="check-list">
+              <li>Prototipar busca mobile.</li>
+              <li>Desenhar página de serviço.</li>
+              <li>Definir API mínima.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>Ajuda Perto - tecnologia feita por pessoas, para pessoas.</span>
+        <span>
+          <a href="../en/ROADMAP.md">Roadmap EN</a> ·
+          <a href="../pt-BR/ROADMAP.md">Roadmap PT-BR</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
